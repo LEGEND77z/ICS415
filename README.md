@@ -13,14 +13,15 @@ Make sure you have Python 3.x installed. You also need the following libraries:
 - NumPy (for mathematical calculations)
 # Installation Steps
 Clone the repository
-git clone https://github.com/LEGEND77z/ICS415
-cd HW1
+- git clone https://github.com/LEGEND77z/ICS415
+- cd HW1
 # Install dependencies
-pip install -r requirements.txt
-Run the script
-python HW1.py
+open a terminal and write the following commands:
+- pip install numpy
+- pip install pillow
+- Run the script by typing python HW1.py
 The output image will be saved as ray_traced_spheres.png.
-How It Works
+# How It Works
 The script simulates rays from a camera towards objects (spheres).
 If a ray hits a sphere, the pixel is colored accordingly.
 If no sphere is hit, the pixel is white (background).
