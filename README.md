@@ -16,8 +16,7 @@ Installation Steps
 Clone the repository
 git clone https://github.com/LEGEND77z/ICS415
 cd HW1
-Install dependencies
-
+#Install dependencies
 pip install -r requirements.txt
 Run the script
 python HW1.py
@@ -26,7 +25,7 @@ How It Works
 The script simulates rays from a camera towards objects (spheres).
 If a ray hits a sphere, the pixel is colored accordingly.
 If no sphere is hit, the pixel is white (background).
-Example Output
+#Example Output
 ![ray_traced_spheres](https://github.com/user-attachments/assets/49d63b80-ab8a-47e9-b58f-d92ef90bd2fd)
 
 
