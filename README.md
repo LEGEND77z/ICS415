@@ -1,4 +1,4 @@
-#Ray Tracing from Scratch
+##Ray Tracing from Scratch
 Overview
 This project is a simple ray tracer built using Python and Pillow (PIL). It simulates how light interacts with objects (spheres) in a 3D space and renders a 2D image.
 #Features
