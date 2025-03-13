@@ -47,10 +47,8 @@ Follow these steps to set up and run this project:
 ## **Screenshot of the Original Shadertoy Project**
 Below is a visual reference for the original shader from Shadertoy:
 
-```markdown
-![image](https://github.com/user-attachments/assets/692588e4-e4bb-47e8-aebd-5ca4b46aebef)
 
-```
+![image](https://github.com/user-attachments/assets/692588e4-e4bb-47e8-aebd-5ca4b46aebef)
 
 ---
 
