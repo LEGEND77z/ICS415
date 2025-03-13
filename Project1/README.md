@@ -26,5 +26,8 @@ If a ray hits a sphere, the pixel is colored accordingly.
 If no sphere is hit, the pixel is white (background).
 # Example Output
 ![ray_traced_spheres](https://github.com/user-attachments/assets/49d63b80-ab8a-47e9-b58f-d92ef90bd2fd)
+![image](https://github.com/user-attachments/assets/9e2edf8f-25d6-4c10-9e03-f82fc0ef2839)
+
+
 
 
