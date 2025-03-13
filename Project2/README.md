@@ -51,6 +51,8 @@ Below is a visual reference for the original shader from Shadertoy:
 ![image](https://github.com/user-attachments/assets/692588e4-e4bb-47e8-aebd-5ca4b46aebef)
 
 ---
+And this is what it should looks like in unity
+![image](https://github.com/user-attachments/assets/1cb72a95-bfeb-4a03-a1a2-2bf3e48e2a04)
 
 ## **Acknowledgments**
 Special thanks to the authors and contributors of Shadertoy for inspiring shader developers around the world. This project stands as an educational adaptation and demonstration of shader techniques.
