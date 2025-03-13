@@ -13,7 +13,7 @@ Make sure you have Python 3.x installed. You also need the following libraries:
 # Installation Steps
 Clone the repository
 - git clone https://github.com/LEGEND77z/ICS415
-- cd HW1
+- cd Project1
 # Install dependencies
 open a terminal and write the following commands:
 - pip install numpy
