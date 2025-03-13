@@ -37,8 +37,8 @@ Follow these steps to set up and run this project:
 ## **Attribution**
 
 ### **Original Shadertoy Project**
-- **Name**: Strange Alien Coral
-- **Author**: _IQ_
+- **Name**: CineShader Lava 
+- **Author**: edankwan
 - **Link**: [Shadertoy - CineShader Lava](https://www.shadertoy.com/view/3sySRK)
 - **License**: Ensure you comply with any licensing terms provided on the Shadertoy website for using or adapting this shader.
 
@@ -47,10 +47,9 @@ Follow these steps to set up and run this project:
 ## **Screenshot of the Original Shadertoy Project**
 Below is a visual reference for the original shader from Shadertoy:
 
-*(Add your screenshot here by uploading the image to the repository and linking it using markdown, for example:)*
-
 ```markdown
-![Original Shader Screenshot](./path-to-your-screenshot-file.png)
+![image](https://github.com/user-attachments/assets/692588e4-e4bb-47e8-aebd-5ca4b46aebef)
+
 ```
 
 ---
