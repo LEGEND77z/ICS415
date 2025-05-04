@@ -91,3 +91,6 @@ Project3-MinecraftLikeEngine/
 | Exit game      | `Esc`             |
 
 ---
+## 🖼️ Screenshot
+
+![BlockStorm Preview](screenshot.png)
