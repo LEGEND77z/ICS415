@@ -58,7 +58,7 @@ cd ICS415/Project3/BlockStormEngine
 
 ---
 
-## 📁 Project Structure
+### 📁 Project Structure
 
 Project3-MinecraftLikeEngine/
 ├── shaders/
@@ -75,7 +75,7 @@ Project3-MinecraftLikeEngine/
 │ ├── ShaderUtils.java
 │ └── TextureUtils.java
 └── README.md
-
+###
 
 
 ---
