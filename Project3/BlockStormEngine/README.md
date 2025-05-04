@@ -27,8 +27,8 @@ This project is a simplified Minecraft-like voxel engine implemented using Java 
 ### Installation & Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/computer-graphics-projects.git
-cd computer-graphics-projects/Project3-MinecraftLikeEngine
+git clone https://github.com/LEGEND77z/ICS415.git
+cd ICS415/Project3/BlockStormEngine
 ```
 ### 2. Open the Project in IntelliJ IDEA
 
@@ -53,3 +53,34 @@ cd computer-graphics-projects/Project3-MinecraftLikeEngine
 
 ### 📁 Project Structure
 
+Project3-MinecraftLikeEngine/
+├── shaders/
+│ ├── vertexShader.glsl
+│ └── fragmentShader.glsl
+├── textures/
+│ └── block_atlas.png
+├── src/
+│ ├── BlockStorm.java # Main class
+│ ├── Block.java
+│ ├── Camera.java
+│ ├── World.java
+│ ├── Raycaster.java
+│ ├── ShaderUtils.java
+│ └── TextureUtils.java
+└── README.md
+
+
+
+---
+
+### 🎮 Controls
+
+| Action         | Key / Input       |
+|----------------|-------------------|
+| Move           | `W`, `A`, `S`, `D` |
+| Look           | Move mouse        |
+| Break block    | Left click        |
+| Place block    | Right click       |
+| Exit game      | `Esc`             |
+
+---
