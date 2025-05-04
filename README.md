@@ -10,8 +10,7 @@ This project is based on the ray tracing exercise from the book *Ray Tracing in 
 ### **Project 2: Shader Creation**
 This project showcases a custom shader developed using **Unity**, inspired by concepts and examples from the **Shadertoy** website. The shader explores creative visual effects and demonstrates advanced shader techniques.
 
-## Project 3: Minecraft-like Engine (BlockStorm)
-
-This project implements a simple 3D voxel engine inspired by Minecraft, developed using Java and LWJGL. It features basic voxel-based world rendering, camera movement, block placement and removal, raycasting for interaction, and texture mapping.
+### **Project 3: Minecraft-like Game Engine**
+This project is a simplified Minecraft-like engine implemented using Java and LWJGL (Lightweight Java Game Library). It demonstrates foundational concepts of 3D computer graphics, including rendering textured 3D blocks, basic camera controls, and interactive world-building features such as block placement and removal.
 
 
