@@ -1,106 +1,75 @@
-Project 3: Minecraft-like Game Engine
-Project Overview
-This project is a simplified Minecraft-like engine implemented using Java and LWJGL (Lightweight Java Game Library). It demonstrates foundational concepts of 3D computer graphics, including rendering textured 3D blocks, basic camera controls, and interactive world-building features such as block placement and removal.
+# Project 3: Minecraft-like Game Engine
 
-Features
-3D Block Rendering: Renders textured cubes forming a basic voxel-based world.
+## Overview
+This project is a simplified Minecraft-like voxel engine implemented using Java and LWJGL. It provides foundational 3D graphics features, including rendering textured cubes, interactive camera movement, block placement, and destruction.
 
-Texture Mapping: Applies textures from a texture atlas to each face of the cubes for realistic visuals.
+## Features
+- **3D Block Rendering:** Displays textured voxel-based cubes.
+- **Texture Mapping:** Applies textures from a texture atlas to blocks.
+- **Interactive Camera:** WASD and mouse-driven camera navigation.
+- **Block Manipulation:** Left-click to remove blocks; right-click to place blocks interactively.
+- **Raycasting:** Accurately detects targeted blocks for interaction.
 
-Interactive Camera: Implements a first-person camera with WASD movement and mouse-driven rotation.
+## Technologies Used
+- **Java:** Primary programming language.
+- **LWJGL:** Lightweight Java Game Library for OpenGL integration.
+- **GLFW:** Handles window creation and user input.
+- **JOML:** Math library for vector and matrix operations.
+- **GLSL Shaders:** Custom shaders for rendering blocks.
 
-Block Manipulation: Allows placing and destroying blocks interactively with mouse inputs (left-click to destroy, right-click to place).
+## Getting Started
 
-Raycasting: Precisely identifies which block the user is interacting with, enabling accurate manipulation.
+### Prerequisites
+- Java Development Kit (JDK 17+)
+- LWJGL 3.3.3 or later
+- IntelliJ IDEA or similar IDE
 
-Technologies Used
-Java: Programming language used for development.
-
-LWJGL: Graphics library that provides OpenGL bindings for Java.
-
-GLFW: Library utilized for handling window management and user input.
-
-JOML: Math library for linear algebra, matrices, and vectors operations.
-
-GLSL Shaders: Custom vertex and fragment shaders for rendering textures.
-
-Getting Started
-Follow these instructions to run the project on your local machine:
-
-Prerequisites
-Java Development Kit (JDK) version 17 or later. (Download JDK)
-
-LWJGL 3.3.3 or later (Download LWJGL)
-
-IntelliJ IDEA (recommended) or any preferred IDE for Java development (Download IntelliJ)
-
-Installation
-Clone the Repository:
-bash
-نسخ
-تحرير
+### Installation & Setup
+1. Clone the repository:
+```bash
 git clone https://github.com/yourusername/computer-graphics-projects.git
 cd computer-graphics-projects/Project3-MinecraftLikeEngine
-Setting up the Project in IntelliJ IDEA:
-Open IntelliJ IDEA and select "File → Open...", then choose the Project3 directory.
+Open the project in IntelliJ IDEA:
 
-Navigate to "File → Project Structure...".
+Launch IntelliJ IDEA.
 
-Go to "Libraries", click "+", select "Java", and add LWJGL jars downloaded from the official website.
+Choose File → Open... and select the Project3-MinecraftLikeEngine folder.
 
-Include native LWJGL libraries for your OS (Windows, Linux, macOS).
+Configure LWJGL libraries:
+
+Go to File → Project Structure → Libraries.
+
+Click the + button, select Java, and add all the LWJGL .jar files you downloaded (e.g., lwjgl.jar, lwjgl-glfw.jar, etc.).
+
+Be sure to include native libraries for your OS (e.g., lwjgl-natives-windows.jar).
 
 Project Structure
 css
 نسخ
 تحرير
 Project3-MinecraftLikeEngine/
+├── shaders/
+│   ├── vertexShader.glsl
+│   └── fragmentShader.glsl
+├── textures/
+│   └── block_atlas.png
 ├── src/
-│   ├── shaders/
-│   │   ├── vertexShader.glsl
-│   │   └── fragmentShader.glsl
-│   ├── textures/
-│   │   └── block_atlas.png
+│   ├── BlockStorm.java       # Main class
 │   ├── Block.java
 │   ├── Camera.java
 │   ├── World.java
 │   ├── ShaderUtils.java
 │   ├── TextureUtils.java
-│   ├── Raycaster.java
-│   └── BlockStorm.java
+│   └── Raycaster.java
 └── README.md
-Running the Application
-Run the BlockStorm class (the entry point).
-
-Controls:
-
+Controls
 Move: W A S D
 
 Look: Move mouse
 
-Place Block: Right mouse button
+Place Block: Right click
 
-Destroy Block: Left mouse button
+Break Block: Left click
 
-Troubleshooting Common Issues
-Textures not loading properly?
+Exit Game: Esc
 
-Ensure textures/block_atlas.png is in the correct path (src/textures).
-
-Verify texture coordinates (UV mapping) if textures appear distorted.
-
-Blocks placing incorrectly?
-
-Adjust raycasting precision or check vector math within the Raycaster class.
-
-License
-This project is licensed under the MIT License—see the LICENSE file for details.
-
-Acknowledgments
-Inspired by Minecraft by Mojang Studios.
-
-LWJGL documentation: LWJGL Official Docs
-
-JOML documentation: JOML Github
-
-Enjoy building your voxel worlds!
