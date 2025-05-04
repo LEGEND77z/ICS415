@@ -60,9 +60,9 @@ cd ICS415/Project3/BlockStormEngine
 
 ### 📁 Project Structure
 
-Project3-MinecraftLikeEngine/\n
-├── shaders/
-│ ├── vertexShader.glsl
+Project3-MinecraftLikeEngine/  
+├── shaders/  
+│ ├── vertexShader.glsl  
 │ └── fragmentShader.glsl
 ├── textures/
 │ └── block_atlas.png
