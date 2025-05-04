@@ -29,47 +29,27 @@ This project is a simplified Minecraft-like voxel engine implemented using Java 
 ```bash
 git clone https://github.com/yourusername/computer-graphics-projects.git
 cd computer-graphics-projects/Project3-MinecraftLikeEngine
-Open the project in IntelliJ IDEA:
+```
+### 2. Open the Project in IntelliJ IDEA
 
-Launch IntelliJ IDEA.
+- Launch IntelliJ IDEA  
+- Go to `File → Open...`  
+- Select the `Project3-MinecraftLikeEngine` folder
 
-Choose File → Open... and select the Project3-MinecraftLikeEngine folder.
+### 3. Configure LWJGL Libraries
 
-Configure LWJGL libraries:
+- Go to `File → Project Structure → Libraries`  
+- Click the `+` button → choose **Java**  
+- Add all required `.jar` files from your LWJGL download, such as:
+  - `lwjgl.jar`
+  - `lwjgl-glfw.jar`
+  - `lwjgl-opengl.jar`
+  - `lwjgl-stb.jar`
+  - `joml.jar`
+- Also include the native `.jar` file for your OS, e.g.:
+  - `lwjgl-natives-windows.jar`
 
-Go to File → Project Structure → Libraries.
+---
 
-Click the + button, select Java, and add all the LWJGL .jar files you downloaded (e.g., lwjgl.jar, lwjgl-glfw.jar, etc.).
-
-Be sure to include native libraries for your OS (e.g., lwjgl-natives-windows.jar).
-
-Project Structure
-css
-نسخ
-تحرير
-Project3-MinecraftLikeEngine/
-├── shaders/
-│   ├── vertexShader.glsl
-│   └── fragmentShader.glsl
-├── textures/
-│   └── block_atlas.png
-├── src/
-│   ├── BlockStorm.java       # Main class
-│   ├── Block.java
-│   ├── Camera.java
-│   ├── World.java
-│   ├── ShaderUtils.java
-│   ├── TextureUtils.java
-│   └── Raycaster.java
-└── README.md
-Controls
-Move: W A S D
-
-Look: Move mouse
-
-Place Block: Right click
-
-Break Block: Left click
-
-Exit Game: Esc
+### 📁 Project Structure
 
