@@ -62,19 +62,19 @@ cd ICS415/Project3/BlockStormEngine
 
 Project3-MinecraftLikeEngine/  
 ├── shaders/  
-│ ├── vertexShader.glsl  
-│ └── fragmentShader.glsl
-├── textures/
-│ └── block_atlas.png
-├── src/
-│ ├── BlockStorm.java # 🟩 Main class
-│ ├── Block.java
-│ ├── Camera.java
-│ ├── World.java
-│ ├── Raycaster.java
-│ ├── ShaderUtils.java
-│ └── TextureUtils.java
-└── README.md
+│ ├── vertexShader.glsl    
+│ └── fragmentShader.glsl  
+├── textures/  
+│ └── block_atlas.png  
+├── src/  
+│ ├── BlockStorm.java # 🟩 Main class  
+│ ├── Block.java  
+│ ├── Camera.java  
+│ ├── World.java  
+│ ├── Raycaster.java  
+│ ├── ShaderUtils.java  
+│ └── TextureUtils.java  
+└── README.md  
 
 
 
