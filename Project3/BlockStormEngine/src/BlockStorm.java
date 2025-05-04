@@ -1,5 +1,5 @@
 import org.joml.*;
-import org.lwjgl.*;
+import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 
@@ -34,56 +34,26 @@ public class BlockStorm {
     private Matrix4f viewMatrix;
 
     private final float[] cubeVertices = {
-            // x,   y,   z,     u,   v
-            // ───────────────────────── Back (side)
-            -0.5f, -0.5f, -0.5f,   0f, 0.33f,
-            0.5f, -0.5f, -0.5f,   1f, 0.33f,
-            0.5f,  0.5f, -0.5f,   1f, 0.66f,
-            0.5f,  0.5f, -0.5f,   1f, 0.66f,
-            -0.5f,  0.5f, -0.5f,   0f, 0.66f,
-            -0.5f, -0.5f, -0.5f,   0f, 0.33f,
-
-            // ───────────────────────── Front (side)
-            -0.5f, -0.5f,  0.5f,   0f, 0.33f,
-            0.5f, -0.5f,  0.5f,   1f, 0.33f,
-            0.5f,  0.5f,  0.5f,   1f, 0.66f,
-            0.5f,  0.5f,  0.5f,   1f, 0.66f,
-            -0.5f,  0.5f,  0.5f,   0f, 0.66f,
-            -0.5f, -0.5f,  0.5f,   0f, 0.33f,
-
-            // ───────────────────────── Left (side)
-            -0.5f,  0.5f,  0.5f,   0f, 0.66f,
-            -0.5f,  0.5f, -0.5f,   1f, 0.66f,
-            -0.5f, -0.5f, -0.5f,   1f, 0.33f,
-            -0.5f, -0.5f, -0.5f,   1f, 0.33f,
-            -0.5f, -0.5f,  0.5f,   0f, 0.33f,
-            -0.5f,  0.5f,  0.5f,   0f, 0.66f,
-
-            // ───────────────────────── Right (side)
-            0.5f,  0.5f,  0.5f,   0f, 0.66f,
-            0.5f,  0.5f, -0.5f,   1f, 0.66f,
-            0.5f, -0.5f, -0.5f,   1f, 0.33f,
-            0.5f, -0.5f, -0.5f,   1f, 0.33f,
-            0.5f, -0.5f,  0.5f,   0f, 0.33f,
-            0.5f,  0.5f,  0.5f,   0f, 0.66f,
-
-            // ───────────────────────── Bottom (dirt)
-            -0.5f, -0.5f, -0.5f,   0f, 0.00f,
-            0.5f, -0.5f, -0.5f,   1f, 0.00f,
-            0.5f, -0.5f,  0.5f,   1f, 0.33f,
-            0.5f, -0.5f,  0.5f,   1f, 0.33f,
-            -0.5f, -0.5f,  0.5f,   0f, 0.33f,
-            -0.5f, -0.5f, -0.5f,   0f, 0.00f,
-
-            // ───────────────────────── Top (grass-top)
-            -0.5f,  0.5f, -0.5f,   0f, 1.00f,
-            0.5f,  0.5f, -0.5f,   1f, 1.00f,
-            0.5f,  0.5f,  0.5f,   1f, 0.66f,
-            0.5f,  0.5f,  0.5f,   1f, 0.66f,
-            -0.5f,  0.5f,  0.5f,   0f, 0.66f,
-            -0.5f,  0.5f, -0.5f,   0f, 1.00f
+            // x, y, z      u, v
+            // Back
+            -0.5f, -0.5f, -0.5f, 0f, 0.33f,  0.5f, -0.5f, -0.5f, 1f, 0.33f,  0.5f,  0.5f, -0.5f, 1f, 0.66f,
+            0.5f,  0.5f, -0.5f, 1f, 0.66f, -0.5f,  0.5f, -0.5f, 0f, 0.66f, -0.5f, -0.5f, -0.5f, 0f, 0.33f,
+            // Front
+            -0.5f, -0.5f,  0.5f, 0f, 0.33f,  0.5f, -0.5f,  0.5f, 1f, 0.33f,  0.5f,  0.5f,  0.5f, 1f, 0.66f,
+            0.5f,  0.5f,  0.5f, 1f, 0.66f, -0.5f,  0.5f,  0.5f, 0f, 0.66f, -0.5f, -0.5f,  0.5f, 0f, 0.33f,
+            // Left
+            -0.5f,  0.5f,  0.5f, 0f, 0.66f, -0.5f,  0.5f, -0.5f, 1f, 0.66f, -0.5f, -0.5f, -0.5f, 1f, 0.33f,
+            -0.5f, -0.5f, -0.5f, 1f, 0.33f, -0.5f, -0.5f,  0.5f, 0f, 0.33f, -0.5f,  0.5f,  0.5f, 0f, 0.66f,
+            // Right
+            0.5f,  0.5f,  0.5f, 0f, 0.66f,  0.5f,  0.5f, -0.5f, 1f, 0.66f,  0.5f, -0.5f, -0.5f, 1f, 0.33f,
+            0.5f, -0.5f, -0.5f, 1f, 0.33f,  0.5f, -0.5f,  0.5f, 0f, 0.33f,  0.5f,  0.5f,  0.5f, 0f, 0.66f,
+            // Bottom
+            -0.5f, -0.5f, -0.5f, 0f, 0.00f,  0.5f, -0.5f, -0.5f, 1f, 0.00f,  0.5f, -0.5f,  0.5f, 1f, 0.33f,
+            0.5f, -0.5f,  0.5f, 1f, 0.33f, -0.5f, -0.5f,  0.5f, 0f, 0.33f, -0.5f, -0.5f, -0.5f, 0f, 0.00f,
+            // Top
+            -0.5f,  0.5f, -0.5f, 0f, 1.00f,  0.5f,  0.5f, -0.5f, 1f, 1.00f,  0.5f,  0.5f,  0.5f, 1f, 0.66f,
+            0.5f,  0.5f,  0.5f, 1f, 0.66f, -0.5f,  0.5f,  0.5f, 0f, 0.66f, -0.5f,  0.5f, -0.5f, 0f, 1.00f
     };
-
 
     public void run() {
         init();
@@ -125,9 +95,9 @@ public class BlockStorm {
         world = new World(10, 1, 10);
         camera = new Camera(new Vector3f(5, 5, 20));
 
-        projectionMatrix = new Matrix4f().perspective((float) Math.toRadians(70), 800f/600f, 0.1f, 100f);
+        projectionMatrix = new Matrix4f().perspective((float) Math.toRadians(70), 800f / 600f, 0.1f, 100f);
 
-        // Mouse callback
+        // Mouse
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         glfwSetCursorPosCallback(window, (win, xpos, ypos) -> {
             if (firstMouse) {
@@ -135,14 +105,13 @@ public class BlockStorm {
                 lastMouseY = ypos;
                 firstMouse = false;
             }
-            float dx = (float)(xpos - lastMouseX);
-            float dy = (float)(ypos - lastMouseY);
+            float dx = (float) (xpos - lastMouseX);
+            float dy = (float) (ypos - lastMouseY);
             lastMouseX = xpos;
             lastMouseY = ypos;
             camera.handleMouse(dx, dy);
         });
 
-        // Mouse button callback
         glfwSetMouseButtonCallback(window, (w, button, action, mods) -> {
             if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) leftClicked = true;
             if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) rightClicked = true;
@@ -159,35 +128,45 @@ public class BlockStorm {
             glBindTexture(GL_TEXTURE_2D, textureID);
 
             camera.move(window);
+            if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+                glfwSetWindowShouldClose(window, true);
+            }
+
             viewMatrix = camera.getViewMatrix();
             Matrix4f vp = new Matrix4f();
             projectionMatrix.mul(viewMatrix, vp);
 
             Raycaster.Hit hit = Raycaster.castRay(camera, world.getBlocks(), 5f, 0.05f);
-            Block target      = hit == null ? null : hit.block();
+            Block target = hit == null ? null : hit.block();
+
+            // Break
             if (leftClicked && target != null) {
                 target.isActive = false;
                 leftClicked = false;
             }
+
+            // Place
             if (rightClicked && hit != null) {
+                Block b = hit.block();
+                Vector3i n = hit.normal();
 
-                Block     b = hit.block();      // block we looked at
-                Vector3i  n = hit.normal();     // face normal we hit (top = 0,1,0)
+                // 🧠 Round to match destroy logic
+                int bx = Math.round(b.x);
+                int by = Math.round(b.y);
+                int bz = Math.round(b.z);
 
-                int nx = (int) (b.x + n.x);
-                int ny = (int) (b.y + n.y);
-                int nz = (int) (b.z + n.z);
+                int nx = bx + n.x;
+                int ny = by + n.y;
+                int nz = bz + n.z;
 
-                // only add if that space is empty
                 boolean occupied = world.getBlocks().stream()
                         .anyMatch(q -> q.x == nx && q.y == ny && q.z == nz);
 
                 if (!occupied) world.getBlocks().add(new Block(nx, ny, nz));
-
                 rightClicked = false;
             }
 
-
+            // Draw
             for (Block b : world.getBlocks()) {
                 if (!b.isActive) continue;
                 Matrix4f model = new Matrix4f().translate(b.x, b.y, b.z);
