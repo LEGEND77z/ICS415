@@ -60,7 +60,7 @@ cd ICS415/Project3/BlockStormEngine
 
 ### 📁 Project Structure
 
-Project3-MinecraftLikeEngine/
+Project3-MinecraftLikeEngine/\n
 ├── shaders/
 │ ├── vertexShader.glsl
 │ └── fragmentShader.glsl
