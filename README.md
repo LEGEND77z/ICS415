@@ -13,6 +13,6 @@ This project showcases a custom shader developed using **Unity**, inspired by co
 ### **Project 3: Minecraft-like Game Engine**
 This project is a simplified Minecraft-like engine implemented using Java and LWJGL (Lightweight Java Game Library). It demonstrates foundational concepts of 3D computer graphics, including rendering textured 3D blocks, basic camera controls, and interactive world-building features such as block placement and removal.
 
-**Project 4:** [Bézier Curve Editor]  
+**Project 4: Bézier Curve Editor**  
   An interactive editor for creating and editing Bézier curves with zooming, panning, and multi-segment support.
 
