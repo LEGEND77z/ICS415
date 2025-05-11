@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bézier Curve Editor</title>
+  <style>
+    canvas {
+      border: 1px solid #ccc;
+      background-color: #fdfdfd;
+      display: block;
+      margin: 20px auto;
+      cursor: crosshair;
+    }
+    body {
+      text-align: center;
+      font-family: sans-serif;
+    }
+    button {
+      margin: 10px;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Bézier Curve Editor</h2>
+  <canvas id="canvas" width="800" height="500"></canvas>
+  <br>
+  <button onclick="addCurve()">Add New Curve</button>
+  <button onclick="resetCanvas()">Reset</button>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const radius = 6;
+    let draggingPoint = null;
+    let panning = false;
+    let lastMouse = { x: 0, y: 0 };
+
+    let scale = 1;
+    let offset = { x: 0, y: 0 };
+
+    class BezierSegment {
+      constructor(p0, p1, p2, p3) {
+        this.points = [p0, p1, p2, p3];
+      }
+
+      draw(ctx) {
+        // Draw control lines
+        ctx.strokeStyle = "#aaa";
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        for (let i = 1; i < 4; i++) {
+          ctx.lineTo(this.points[i].x, this.points[i].y);
+        }
+        ctx.stroke();
+
+        // Draw Bézier curve
+        ctx.strokeStyle = "#000";
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        ctx.bezierCurveTo(
+          this.points[1].x, this.points[1].y,
+          this.points[2].x, this.points[2].y,
+          this.points[3].x, this.points[3].y
+        );
+        ctx.stroke();
+
+        // Draw control points (world space)
+        ctx.fillStyle = "red";
+        for (const pt of this.points) {
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, radius / scale, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      getControlPoints() {
+        return this.points;
+      }
+    }
+
+    const curves = [];
+
+    function drawAll() {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.setTransform(scale, 0, 0, scale, offset.x, offset.y);
+
+      for (const segment of curves) {
+        segment.draw(ctx);
+      }
+    }
+
+    function addCurve() {
+      let p0, p1, p2, p3;
+      if (curves.length > 0) {
+        const last = curves[curves.length - 1].points;
+        p0 = last[3];
+        p1 = { x: p0.x + 80, y: p0.y - 50 };
+        p2 = { x: p0.x + 160, y: p0.y + 50 };
+        p3 = { x: p0.x + 240, y: p0.y };
+      } else {
+        p0 = { x: 100, y: 250 };
+        p1 = { x: 200, y: 100 };
+        p2 = { x: 300, y: 400 };
+        p3 = { x: 400, y: 250 };
+      }
+      curves.push(new BezierSegment(p0, p1, p2, p3));
+      drawAll();
+    }
+
+    function resetCanvas() {
+      curves.length = 0;
+      scale = 1;
+      offset = { x: 0, y: 0 };
+      drawAll();
+    }
+
+    function screenToWorld(x, y) {
+      return {
+        x: (x - offset.x) / scale,
+        y: (y - offset.y) / scale
+      };
+    }
+
+    canvas.addEventListener("mousedown", (e) => {
+      lastMouse = { x: e.clientX, y: e.clientY };
+      if (e.button === 2) {
+        panning = true;
+        return;
+      }
+
+      const rect = canvas.getBoundingClientRect();
+      const mouse = screenToWorld(e.clientX - rect.left, e.clientY - rect.top);
+
+      for (const segment of curves) {
+        for (const pt of segment.getControlPoints()) {
+          const dx = pt.x - mouse.x;
+          const dy = pt.y - mouse.y;
+          if (dx * dx + dy * dy < (radius / scale) ** 2 * 4) {
+            draggingPoint = pt;
+            return;
+          }
+        }
+      }
+    });
+
+    canvas.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      if (draggingPoint) {
+        const mouse = screenToWorld(e.clientX - rect.left, e.clientY - rect.top);
+        draggingPoint.x = mouse.x;
+        draggingPoint.y = mouse.y;
+        drawAll();
+      } else if (panning) {
+        offset.x += e.clientX - lastMouse.x;
+        offset.y += e.clientY - lastMouse.y;
+        lastMouse = { x: e.clientX, y: e.clientY };
+        drawAll();
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      draggingPoint = null;
+      panning = false;
+    });
+
+    canvas.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+
+      const worldPos = screenToWorld(mx, my);
+      const zoom = e.deltaY < 0 ? 1.1 : 0.9;
+      scale *= zoom;
+
+      offset.x = mx - worldPos.x * scale;
+      offset.y = my - worldPos.y * scale;
+      drawAll();
+    });
+
+    canvas.addEventListener("contextmenu", e => e.preventDefault());
+
+    // Initial curve
+    addCurve();
+  </script>
+</body>
+</html>
