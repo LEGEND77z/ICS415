@@ -33,5 +33,8 @@ This project is a visual Bézier curve editor built with HTML5 Canvas and JavaSc
 - Curve continuity smoothing across segments
 
 ---
+## Screenshot
+
+![Bézier Curve Editor Screenshot](./image.png)
 
 🎓 *Developed for ICS415 – Computer Graphics*
